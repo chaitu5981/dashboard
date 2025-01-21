@@ -19,7 +19,7 @@ app.post("/partners/create", (req, res) => {
     else res.status(201).json({ message: "Partner added successfully" });
   });
 });
-app.get("/partners/:id", (req, res) => {
+app.delete("/partners/:id", (req, res) => {
   const { id } = req.params;
   let data1 = data;
   data1 = data1.filter((d) => d.id !== Number(id));

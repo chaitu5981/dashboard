@@ -36,7 +36,10 @@ const App = () => {
       //   method: "delete",
       // });
       const res = await fetch(
-        "https://dashboard-2ptj.onrender.com/partners/" + id
+        "https://dashboard-2ptj.onrender.com/partners/" + id,
+        {
+          method: "delete",
+        }
       );
       if (res.status === 200) loadData();
     } catch (error) {

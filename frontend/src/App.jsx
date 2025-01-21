@@ -19,7 +19,7 @@ const App = () => {
   const loadData = async (parameter) => {
     if (parameter === "Business partners") {
       try {
-        const res = await fetch("http://localhost:3000/partners");
+        const res = await fetch("https://dashboard-2ptj.onrender.com/partners");
         const data = await res.json();
         setFieldData(data.data);
       } catch (error) {
@@ -31,14 +31,14 @@ const App = () => {
     loadData(tabs[tabIndex]);
   }, [tabIndex]);
   return (
-    <div className="flex  bg-[#043b64] h-screen py-3">
-      <div className="menu w-[25%] flex flex-col gap-32 text-white">
+    <div className="flex flex-col md:flex-row bg-[#043b64] min-h-screen  py-3">
+      <div className="menu w-full md:w-[25%] flex flex-col gap-32 h-full text-white">
         <img src={logo} alt="" className="w-[10rem] ml-10" />
-        <div className="flex flex-col border-t-2 border-white font-bold">
+        <div className="flex md:flex-col  md:border-t-2 border-white font-bold">
           {tabs.map((t, i) => (
             <div
               key={i}
-              className="py-[5px] border-b-2 border-white cursor-pointer"
+              className="px-[5px] md:py-[5px] md:px-0 md:border-b-2 md:border-r-0 border-r-2 border-white cursor-pointer"
             >
               <div
                 onClick={() => {
@@ -54,7 +54,7 @@ const App = () => {
           ))}
         </div>
       </div>
-      <div className="w-[75%] h-full bg-white rounded-lg py-16 px-8">
+      <div className="w-full md:w-[75%] min-h-screen bg-white rounded-lg py-16 px-8 ">
         <p className="text-3xl font-bold">Dashboard</p>
         {tabs[tabIndex] === "Business partners" && (
           <div className="mt-20">

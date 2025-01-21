@@ -36,12 +36,9 @@ const App = () => {
       //   method: "delete",
       // });
       const res = await fetch(
-        "https://dashboard-2ptj.onrender.com/partners/" + id,
-        {
-          method: "delete",
-        }
+        "https://dashboard-2ptj.onrender.com/partners/" + id
       );
-      if (res.status === 200) loadData();
+      if (res.status === 200) await loadData();
     } catch (error) {
       console.log(error);
     }

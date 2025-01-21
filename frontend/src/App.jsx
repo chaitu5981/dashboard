@@ -38,7 +38,7 @@ const App = () => {
       const res = await fetch(
         "https://dashboard-2ptj.onrender.com/partners/" + id
       );
-      if (res.status === 200) await loadData();
+      if (res.status === 200) loadData();
     } catch (error) {
       console.log(error);
     }

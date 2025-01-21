@@ -11,13 +11,16 @@ const Modal = ({ setShowModal, loadData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/partners/create", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://dashboard-2ptj.onrender.com/partners/create",
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       //   const data = await res.json();
       if (res.status === 201) setShowModal(false);
       loadData();

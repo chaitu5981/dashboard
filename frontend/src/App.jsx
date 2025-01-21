@@ -86,28 +86,30 @@ const App = () => {
                 Add Partner
               </button>
             </div>
-            <div className="bg-[#f6f6f6] py-4 px-2 rounded-md mt-10 drop-shadow-lg w-full overflow-x-auto">
-              <div className="w-full ">
-                <div className="flex justify-between  py-2 font-bold">
-                  <div className="flex-1 text-center">Name</div>
-                  <div className="flex-1 text-center">Status</div>
-                  <div className="flex-1 text-center">Email</div>
-                  <div className="flex-1 text-center">Phone</div>
-                  <div className="flex-1 text-center">Reference Id</div>
-                  <div className="w-[8rem]"></div>
-                </div>
+            <div className="bg-[#f6f6f6] py-4  rounded-md mt-10 drop-shadow-lg  overflow-x-auto ">
+              <div className="flex justify-between px-6  py-2 font-bold">
+                <div className="w-[16%] text-center">Name</div>
+                <div className="w-[10%] text-center">Status</div>
+                <div className="w-[24%] text-center">Email</div>
+                <div className="w-[20%] text-center">Phone</div>
+                <div className="w-[20%] text-center">Reference Id</div>
+                <div className="w-[10%]"></div>
+              </div>
+              <div className="px-6">
                 {fieldData?.length > 0 &&
                   fieldData?.map((d, i) => (
-                    <tr
+                    <div
                       key={i}
                       className="flex justify-between border-t-2 gap-2 border-gray-300 py-2"
                     >
-                      <div className="flex-1 text-center">{d.name}</div>
-                      <div className="flex-1 text-center">{d.status}</div>
-                      <div className="flex-1 text-center">{d.email}</div>
-                      <div className="flex-1 text-center">{d.phone}</div>
-                      <div className="flex-1 text-center">{d.referenceId}</div>
-                      <div className="flex gap-2">
+                      <div className="w-[16%] text-center">{d.name}</div>
+                      <div className="w-[10%] text-center">{d.status}</div>
+                      <div className="w-[24%] text-center text-wrap">
+                        {d.email}
+                      </div>
+                      <div className="w-[20%] text-center">{d.phone}</div>
+                      <div className="w-[20%] text-center">{d.referenceId}</div>
+                      <div className="flex gap-2 w-[10%]">
                         <div>
                           <button
                             className="bg-red-500 rounded px-2 py-1 text-white"
@@ -122,7 +124,7 @@ const App = () => {
                           </button>
                         </div>
                       </div>
-                    </tr>
+                    </div>
                   ))}
               </div>
             </div>

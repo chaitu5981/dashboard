@@ -21,9 +21,12 @@ app.post("/partners/create", (req, res) => {
 });
 app.delete("/partners/:id", (req, res) => {
   const { id } = req.params;
-  let data1 = [...data];
+  let data1;
+  fs.readFile("./db.json", "utf-8", (err, data) => {
+    if (err) console.log(err);
+    else data1 = data;
+  });
   data1 = data1.filter((d) => d.id !== Number(id));
-  console.log(data1);
   fs.writeFile("./db.json", JSON.stringify(data1), (err) => {
     if (err) console.log(err);
     else res.status(200).json({ message: "Partner deleted successfully" });

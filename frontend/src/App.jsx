@@ -34,7 +34,7 @@ const App = () => {
     <div className="flex flex-col md:flex-row bg-[#043b64] min-h-screen  py-3">
       <div className="menu w-full md:w-[25%] flex flex-col gap-32 h-full text-white">
         <img src={logo} alt="" className="w-[10rem] ml-10" />
-        <div className="flex md:flex-col  md:border-t-2 border-white font-bold">
+        <div className="flex md:flex-col  md:border-t-2 border-white font-bold overflow-x-auto">
           {tabs.map((t, i) => (
             <div
               key={i}

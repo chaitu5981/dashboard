@@ -32,7 +32,7 @@ const App = () => {
   }, [tabIndex]);
   return (
     <div className="flex flex-col md:flex-row bg-[#043b64] min-h-screen  py-3">
-      <div className="menu w-full md:w-[25%] flex flex-col gap-32 h-full text-white">
+      <div className="w-full md:w-[25%] flex flex-col gap-32 h-full text-white">
         <img src={logo} alt="" className="w-[10rem] ml-10" />
         <div className="flex md:flex-col  md:border-t-2 border-white font-bold overflow-x-auto">
           {tabs.map((t, i) => (
@@ -57,12 +57,12 @@ const App = () => {
       <div className="w-full md:w-[75%] min-h-screen bg-white rounded-lg py-16 px-8 ">
         <p className="text-3xl font-bold">Dashboard</p>
         {tabs[tabIndex] === "Business partners" && (
-          <div className="mt-20">
+          <div className="mt-20 w-full">
             <p className="text-2xl font-bold">Give Help</p>
-            <div className="bg-[#f6f6f6] py-4 rounded-md mt-10 drop-shadow-lg">
-              <table className="w-full">
+            <div className="bg-[#f6f6f6] py-4 px-2 rounded-md mt-10 drop-shadow-lg w-full overflow-x-auto">
+              <table className="w-full ">
                 <thead>
-                  <tr className="flex justify-around py-2">
+                  <tr className="flex justify-between  py-2">
                     <th>Name</th>
                     <th>Status</th>
                     <th>Email</th>
@@ -76,7 +76,7 @@ const App = () => {
                     fieldData?.map((d, i) => (
                       <tr
                         key={i}
-                        className="flex justify-around border-t-2 border-gray-300 py-2"
+                        className="flex justify-between border-t-2 gap-2 border-gray-300 py-2"
                       >
                         <td>{d.name}</td>
                         <td>{d.status}</td>

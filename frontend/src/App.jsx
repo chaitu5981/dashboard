@@ -93,8 +93,8 @@ const App = () => {
                 Add Partner
               </button>
             </div>
-            <div className="bg-[#f6f6f6] py-4 min-w-full rounded-md mt-10 drop-shadow-lg  overflow-x-auto ">
-              <div className="flex justify-between px-6  py-2 font-bold">
+            <div className="bg-[#f6f6f6] text-xs md:text-sm py-4 min-w-full rounded-md mt-10 drop-shadow-lg  overflow-x-scroll ">
+              <div className="flex justify-between px-6 min-w-full  py-2 font-bold">
                 <div className="w-[16%] text-center break-words">Name</div>
                 <div className="w-[10%] text-center break-words">Status</div>
                 <div className="w-[24%] text-center break-words">Email</div>
@@ -104,46 +104,44 @@ const App = () => {
                 </div>
                 <div className="w-[10%]"></div>
               </div>
-              <div className="px-6">
-                {fieldData?.length > 0 &&
-                  fieldData?.map((d, i) => (
-                    <div
-                      key={i}
-                      className="flex justify-between border-t-2 gap-2 border-gray-300 py-2"
-                    >
-                      <div className="w-[16%] text-center break-words">
-                        {d.name}
+              {fieldData?.length > 0 &&
+                fieldData?.map((d, i) => (
+                  <div
+                    key={i}
+                    className="flex justify-between px-6 border-t-2 min-w-full border-gray-300 py-2"
+                  >
+                    <div className="w-[16%] text-center break-words">
+                      {d.name}
+                    </div>
+                    <div className="w-[10%] text-center break-words">
+                      {d.status}
+                    </div>
+                    <div className="w-[24%] text-center break-words">
+                      {d.email}
+                    </div>
+                    <div className="w-[20%] text-center break-words">
+                      {d.phone}
+                    </div>
+                    <div className="w-[20%] text-center break-words">
+                      {d.referenceId}
+                    </div>
+                    <div className="flex gap-2 w-[10%]">
+                      <div>
+                        <button
+                          className="bg-red-500 rounded px-2 py-1 text-white"
+                          onClick={() => handleDelete(d.id)}
+                        >
+                          Delete
+                        </button>
                       </div>
-                      <div className="w-[10%] text-center break-words">
-                        {d.status}
-                      </div>
-                      <div className="w-[24%] text-center break-words">
-                        {d.email}
-                      </div>
-                      <div className="w-[20%] text-center break-words">
-                        {d.phone}
-                      </div>
-                      <div className="w-[20%] text-center break-words">
-                        {d.referenceId}
-                      </div>
-                      <div className="flex gap-2 w-[10%]">
-                        <div>
-                          <button
-                            className="bg-red-500 rounded px-2 py-1 text-white"
-                            onClick={() => handleDelete(d.id)}
-                          >
-                            Delete
-                          </button>
-                        </div>
-                        <div>
-                          <button className="bg-[#043b64] text-white rounded-md px-2 py-1">
-                            Paid
-                          </button>
-                        </div>
+                      <div>
+                        <button className="bg-[#043b64] text-white rounded-md px-2 py-1">
+                          Paid
+                        </button>
                       </div>
                     </div>
-                  ))}
-              </div>
+                  </div>
+                ))}
             </div>
           </div>
         )}

@@ -12,6 +12,14 @@ const Modal = ({ setShowModal, loadData }) => {
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.status ||
+      !formData.phone ||
+      !formData.referenceId
+    )
+      return alert("Please enter all fields!");
     try {
       setLoading(true);
       const res = await fetch(

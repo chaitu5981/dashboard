@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Loader from "./Loader";
 
 const Modal = ({ setShowModal, loadData }) => {
   const [formData, setFormData] = useState({
@@ -8,9 +9,11 @@ const Modal = ({ setShowModal, loadData }) => {
     status: "inactive",
     referenceId: "",
   });
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const res = await fetch(
         "https://dashboard-2ptj.onrender.com/partners/create",
         {
@@ -26,6 +29,8 @@ const Modal = ({ setShowModal, loadData }) => {
       loadData();
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
   const handleChange = (e) => {
@@ -40,8 +45,8 @@ const Modal = ({ setShowModal, loadData }) => {
       onClick={handleClick}
       className="fixed inset-0 bg-black bg-opacity-50  flex justify-center items-center container"
     >
-      <div className="overflow-y-auto max-h-[80vh]">
-        <div className="w-[20rem] md:w-[30rem] rounded-lg">
+      <div className="overflow-y-auto max-h-[80vh] relative">
+        <div className="w-[20rem] md:w-[30rem] rounded-lg ">
           <div className="bg-[#043b64] text-white w-full py-2 text-center">
             Add Partner
           </div>
@@ -101,6 +106,7 @@ const Modal = ({ setShowModal, loadData }) => {
               Submit
             </button>
           </form>
+          <Loader loading={loading} />
         </div>
       </div>
     </div>

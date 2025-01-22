@@ -2,6 +2,7 @@ import { MdLogout } from "react-icons/md";
 import logo from "./assets/logo.png";
 import { useEffect, useState } from "react";
 import Modal from "./components/Modal";
+import Loader from "./components/Loader";
 const App = () => {
   const tabs = [
     "Dashboard",
@@ -18,15 +19,18 @@ const App = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [fieldData, setFieldData] = useState();
   const [showModal, setShowModal] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const loadData = async () => {
     try {
+      setLoading(true);
       const res = await fetch("https://dashboard-2ptj.onrender.com/partners");
       // const res = await fetch("http://localhost:3000/partners");
       const data = await res.json();
       setFieldData(data.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -35,6 +39,7 @@ const App = () => {
       // const res = await fetch("http://localhost:3000/partners/" + id, {
       //   method: "delete",
       // });
+      setLoading(true);
       const res = await fetch(
         "https://dashboard-2ptj.onrender.com/partners/" + id,
         {
@@ -44,6 +49,8 @@ const App = () => {
       if (res.status === 200) loadData();
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -73,7 +80,7 @@ const App = () => {
           ))}
         </div>
       </div>
-      <div className="w-full md:w-[75%] min-h-screen bg-white rounded-lg py-16 px-8 ">
+      <div className="w-full md:w-[75%] min-h-screen bg-white rounded-lg py-16 px-8 relative">
         <p className="text-3xl font-bold">Dashboard</p>
         {tabs[tabIndex] === "Business partners" && (
           <div className="mt-20 w-full">
@@ -104,10 +111,12 @@ const App = () => {
                     >
                       <div className="w-[16%] text-center">{d.name}</div>
                       <div className="w-[10%] text-center">{d.status}</div>
-                      <div className="w-[24%] text-center text-wrap">
+                      <div className="w-[24%] text-center break-words">
                         {d.email}
                       </div>
-                      <div className="w-[20%] text-center">{d.phone}</div>
+                      <div className="w-[20%] text-center break-words">
+                        {d.phone}
+                      </div>
                       <div className="w-[20%] text-center">{d.referenceId}</div>
                       <div className="flex gap-2 w-[10%]">
                         <div>
@@ -130,6 +139,7 @@ const App = () => {
             </div>
           </div>
         )}
+        <Loader loading={loading} />
       </div>
       {showModal && <Modal setShowModal={setShowModal} loadData={loadData} />}
     </div>

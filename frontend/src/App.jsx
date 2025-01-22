@@ -109,8 +109,8 @@ const App = () => {
                       key={i}
                       className="flex justify-between border-t-2 gap-2 border-gray-300 py-2"
                     >
-                      <div className="w-[16%] text-center">{d.name}</div>
-                      <div className="w-[10%] text-center">{d.status}</div>
+                      <div className="w-[16%] text-center break-words">{d.name}</div>
+                      <div className="w-[10%] text-center break-words">{d.status}</div>
                       <div className="w-[24%] text-center break-words">
                         {d.email}
                       </div>

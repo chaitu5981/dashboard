@@ -1,4 +1,4 @@
-import DotLoader from "react-spinners/ClipLoader";
+import DotLoader from "react-spinners/DotLoader";
 const Loader = ({ loading }) => {
   const override = {
     position: "absolute",

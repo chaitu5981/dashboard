@@ -1,4 +1,4 @@
-import DotLoader from "react-spinners/DotLoader";
+import DotLoader from "react-spinners/CircleLoader";
 const Loader = ({ loading }) => {
   const override = {
     position: "absolute",
